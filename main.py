@@ -47,9 +47,9 @@ def adicionarBloqueio(url):
             # file.write("\n" + LOCAL_IP + " "*BLANK_SPACE_IP + PADRAO_URL1 + url_val)            #http
             # file.write("\n" + LOCAL_IP + " "*BLANK_SPACE_IP + PADRAO_URL2 + url_val)            #https
 
-copiarHost()
-adicionarBloqueio("www.facebook.com")
-atualizarHostOriginal(defines.HOST_COPY)
+# copiarHost()
+# adicionarBloqueio("www.facebook.com")
+# atualizarHostOriginal(defines.HOST_COPY)
 
 # 127.0.0.1      www.FACEBOOK.COM            # FACEBOOK SITE
 # 127.0.0.1 + BLANK_SPACE_IP + url + (preencher de vazio até a posicao 52) + descricao
@@ -69,3 +69,19 @@ atualizarHostOriginal(defines.HOST_COPY)
 #desenvolver a lista temporária, talvez adicionar hots , guardar num arquivo quais foram adicionados
 #depois do tempo excluir 1 por 1 e atualizar o host original, em vez de salvar como backup.
 
+# if(seExistHostBackup)
+# {
+#     pegar
+# }
+# else
+# continua o programa, pq n é a primeira execucao.
+
+
+def verificarBackup():
+    if(not os.path.isfile(defines.HOST_BACKUP_ORIGINAL)):
+        shutil.copy2(defines.HOST_URL, defines.HOST_BACKUP_ORIGINAL)
+    else:
+        print("ja tem")
+if __name__ == "__main__":
+    #construtor sempre que abrir o programa
+    verificarBackup()
